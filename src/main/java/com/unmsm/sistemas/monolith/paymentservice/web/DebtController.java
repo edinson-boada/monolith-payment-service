@@ -22,4 +22,9 @@ public class DebtController {
     public List<DebtEntity> getByServiceCustomerId(@PathVariable("id") Integer id) {
         return debtService.getByServiceCustomerId(id);
     }
+
+    @GetMapping("/service/{id}")
+    public DebtEntity getByServiceId(@PathVariable("id") Integer id) {
+        return debtService.getByServiceId(id);
+    }
 }

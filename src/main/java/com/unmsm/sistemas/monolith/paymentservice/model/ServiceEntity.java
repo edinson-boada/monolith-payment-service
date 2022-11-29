@@ -24,10 +24,9 @@ public class ServiceEntity {
     private Integer id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @Column(name = "service_name")
     private ServiceNameEntity serviceName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private CustomerEntity customer;
 
     @Column(name = "registration_date")

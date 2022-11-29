@@ -16,19 +16,19 @@ import javax.persistence.EntityNotFoundException;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-    private static final String PERSON_NOT_FOUND = "Persona no encontrada";
-    private final CustomerRepository personRepository;
+    private static final String CUSTOMER_NOT_FOUND = "customer not found";
+    private final CustomerRepository customerRepository;
 
   @Override
   public CustomerEntity getById(Integer id) {
-    log.info("findById for person");
-    return personRepository
+    log.info("findById for customer");
+    return customerRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException(PERSON_NOT_FOUND));
+        .orElseThrow(() -> new EntityNotFoundException(CUSTOMER_NOT_FOUND));
     }
 
     @Override
     public boolean findByDocNumber(String docNumber) {
-        return personRepository.findByDocNumber(docNumber).isPresent();
+        return customerRepository.findByDocNumber(docNumber).isPresent();
     }
 }

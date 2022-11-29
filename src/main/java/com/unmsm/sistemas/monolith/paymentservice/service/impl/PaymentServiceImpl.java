@@ -2,6 +2,7 @@ package com.unmsm.sistemas.monolith.paymentservice.service.impl;
 
 import com.unmsm.sistemas.monolith.paymentservice.model.DebtEntity;
 import com.unmsm.sistemas.monolith.paymentservice.model.InvoiceEntity;
+import com.unmsm.sistemas.monolith.paymentservice.model.dto.PaymentDto;
 import com.unmsm.sistemas.monolith.paymentservice.repository.DebtRepository;
 import com.unmsm.sistemas.monolith.paymentservice.repository.InvoiceRepository;
 import com.unmsm.sistemas.monolith.paymentservice.service.PaymentService;
@@ -18,8 +19,8 @@ public class PaymentServiceImpl implements PaymentService {
     private final InvoiceRepository invoiceRepository;
 
     @Override
-    public InvoiceEntity payService(Integer serviceId) {
-        DebtEntity debt = debtRepository.findByServiceId(serviceId);
+    public InvoiceEntity payService(PaymentDto request) {
+        DebtEntity debt = debtRepository.findByServiceId(request.getId());
         InvoiceEntity invoice = new InvoiceEntity();
         invoice.setDebt(debt);
         invoice.setTotalInvoice(debt.getMonthlyPayment() + debt.getLatePayment());
