@@ -3,6 +3,7 @@ package com.unmsm.sistemas.monolith.paymentservice.web;
 import com.unmsm.sistemas.monolith.paymentservice.model.InvoiceEntity;
 import com.unmsm.sistemas.monolith.paymentservice.model.dto.PaymentDto;
 import com.unmsm.sistemas.monolith.paymentservice.service.PaymentService;
+import com.unmsm.sistemas.monolith.paymentservice.utils.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,8 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping
-    public InvoiceEntity payService(@RequestBody PaymentDto request) {
+    public InvoiceEntity payService(@RequestBody PaymentDto request) throws InterruptedException {
+        Util.logger();
         return paymentService.payService(request);
     }
 }
